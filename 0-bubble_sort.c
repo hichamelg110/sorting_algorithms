@@ -8,7 +8,8 @@ return;
 size_t i, len = size;
 bool swap;
 
-do {
+do
+{
 swap = false;
 for (i = 0; i < len - 1; i++) {
 if (array[i] > array[i + 1]) {
@@ -20,5 +21,6 @@ swap = true;
 }
 }
 len--;
-} while (swap);
+}
+while (swap);
 }
