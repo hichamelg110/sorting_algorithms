@@ -22,9 +22,12 @@ return;
 size_t i, len;
 bool swap;
 
-for (len = size; len > 1 && (swap = false); len--) {
-for (i = 0; i < len - 1; i++) {
-if (array[i] > array[i + 1]) {
+for (len = size; len > 1 && (swap = false); len--)
+{
+for (i = 0; i < len - 1; i++)
+{
+if (array[i] > array[i + 1])
+{
 swap_ints(array + i, array + i + 1);
 print_array(array, size);
 swap = true;
