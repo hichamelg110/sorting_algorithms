@@ -23,11 +23,10 @@ tmp = *a;
  */
 void bubble_sort(int *array, size_t size)
 {
-if (array == NULL || size < 2)
-return;
-
 size_t i, len = size;
 int c = 1;
+if (array == NULL || size < 2)
+return;
 
 while (c)
 {
