@@ -26,14 +26,14 @@ void lomuto_sort(int *array, size_t size, int left, int right)
 {
 if (right - left > 0)
 {
-int pivot_index = hoare_partition(array, size, left, right);
-lomuto_sort(array, size, left, pivot_index);
+int pivot_index = lomuto_partition(array, size, left, right);
+lomuto_sort(array, size, left, pivot_index - 1);
 lomuto_sort(array, size, pivot_index + 1, right);
 }
 }
 
 /**
- * hoare_partition - Performs the Hoare partition scheme on an array.
+ * lomuto_partition - Performs the Lomuto partition scheme on an array.
  * @array: The array to be partitioned.
  * @size: The size of the array.
  * @left: The starting index of the partition.
@@ -41,37 +41,30 @@ lomuto_sort(array, size, pivot_index + 1, right);
  *
  * Return: The final partition index.
  */
-int hoare_partition(int *array, size_t size, int left, int right)
+int lomuto_partition(int *array, size_t size, int left, int right)
 {
 int pivot = array[right];
-int i = left - 1;
-int j = right;
+int i = left;
+int j;
 
-while (1)
+for (j = left; j < right; j++)
 {
-do
+if (array[j] < pivot)
 {
-i++;
-}
-while (array[i] < pivot);
-
-do
+if (i < j)
 {
-j--;
-}
-while (array[j] > pivot && j > left);
-
-if (i >= j)
-{
-break;
-}
-
 swap_ints(array + i, array + j);
 print_array(array, size);
 }
+i++;
+}
+}
 
+if (array[i] > pivot)
+{
 swap_ints(array + i, array + right);
 print_array(array, size);
+}
 
 return i;
 }
